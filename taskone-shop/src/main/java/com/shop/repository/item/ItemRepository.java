@@ -1,12 +1,12 @@
 package com.shop.repository.item;
 
 import com.shop.domain.item.Item;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-public interface ItemRepository {
-    List<Item> getAllItems();
-    Item addItem(Item item);
-    Item updateItem(Item item,int index);
-    void deleteItem(int index);
+@Repository
+public interface ItemRepository extends CrudRepository<Item, Long> {
+    List<Item> findAll();
 }

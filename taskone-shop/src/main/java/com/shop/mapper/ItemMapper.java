@@ -11,14 +11,14 @@ import java.util.stream.Collectors;
 public class ItemMapper {
 
     public Item mapToItem(ItemDto itemDto) {
-        return Item.of(itemDto.getName(), itemDto.getCost());
+        return new Item(itemDto.getName(), itemDto.getCost());
     }
 
     public ItemDto mapToItemDto(Item item) {
-        return new ItemDto(item.getName(), item.getCost());
+        return new ItemDto(item.getId(), item.getName(), item.getCost());
     }
 
-    public List<ItemDto> mapToListDto(List<Item> items){
+    public List<ItemDto> mapToListDto(List<Item> items) {
         return items.stream()
                 .map(this::mapToItemDto)
                 .collect(Collectors.toList());

@@ -1,3 +1,3 @@
 rootProject.name = 'KodillaExtraCourse'
 include 'moduleone'
-include'taskone-shop'
+include 'taskone-shop'

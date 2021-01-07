@@ -1,10 +1,25 @@
 package com.shop.domain.item;
 
-import lombok.Value;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-@Value(staticConstructor = "of")
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
+@NoArgsConstructor
+@Getter
 public class Item {
-    String name;
-    double cost;
 
+    @Id
+    @GeneratedValue
+    private Long id;
+    private String name;
+    private double cost;
+
+    public Item(String name, double cost) {
+        this.name = name;
+        this.cost = cost;
+    }
 }

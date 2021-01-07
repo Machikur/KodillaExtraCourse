@@ -14,19 +14,19 @@ public class ItemService {
     private final ItemRepository itemRepository;
 
     public List<Item> getAllItems() {
-        return itemRepository.getAllItems();
+        return itemRepository.findAll();
     }
 
     public Item addItem(Item item) {
-        return itemRepository.addItem(item);
+        return itemRepository.save(item);
     }
 
-    public Item updateItem(Item item, int index) {
-        return itemRepository.updateItem(item, index);
+    public Item updateItem(Item item) {
+        return itemRepository.save(item);
     }
 
-    public void deleteItem(int index) {
-        itemRepository.deleteItem(index);
+    public void deleteItem(Long id) {
+        itemRepository.deleteById(id);
     }
 
 }

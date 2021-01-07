@@ -1,50 +1,49 @@
 package com.shop.domain.user;
 
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
 @Entity
-@Table(name="USERS")
 @NoArgsConstructor
-@AllArgsConstructor
 public class User implements UserDetails {
 
     @Id
-    @Column
+    @GeneratedValue
     private Long id;
+
     private String userName;
+
     private String password;
 
-    @ManyToMany(targetEntity = Role.class)
-    private List<Role> roles;
+    @ManyToMany(targetEntity = UserAuth.class,
+            cascade = CascadeType.MERGE
+            , fetch = FetchType.EAGER)
+    private List<UserAuth> userAuths;
 
-    public User(String userName, String password, Role... roles) {
+    public User(String userName, String password, List<UserAuth> userAuths) {
         this.userName = userName;
         this.password = password;
-        assert roles.length > 0;
-        this.roles.addAll(Arrays.asList(roles));
+        this.userAuths = userAuths;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return roles;
+        return this.userAuths;
     }
 
     @Override
     public String getPassword() {
-        return null;
+        return this.password;
     }
 
     @Override
     public String getUsername() {
-        return null;
+        return this.userName;
     }
 
     @Override

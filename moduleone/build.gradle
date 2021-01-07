@@ -1,16 +1,24 @@
+plugins {
+    id 'org.springframework.boot'
+    id 'io.spring.dependency-management'
+    id 'java'
+}
 
+repositories {
+    mavenCentral()
+}
 
 dependencies {
-	compileOnly 'org.projectlombok:lombok:1.18.16'
-	annotationProcessor 'org.projectlombok:lombok:1.18.16'
+    compileOnly 'org.projectlombok:lombok:1.18.16'
+    annotationProcessor 'org.projectlombok:lombok:1.18.16'
 
-	implementation 'org.springframework:spring-web'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework.boot:spring-boot-starter-security'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'org.springframework.security:spring-security-test'
+    implementation 'org.springframework:spring-web'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
 }
 
 test {
-	useJUnitPlatform()
+    useJUnitPlatform()
 }
