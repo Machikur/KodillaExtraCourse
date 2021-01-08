@@ -1,7 +1,7 @@
 package com.shop.service;
 
+import com.shop.domain.user.Auth;
 import com.shop.domain.user.UserAuth;
-import com.shop.domain.user.UserAuth.Auth;
 import com.shop.repository.user.UserRoleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

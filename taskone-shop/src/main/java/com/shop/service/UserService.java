@@ -1,8 +1,8 @@
 package com.shop.service;
 
+import com.shop.domain.user.Auth;
 import com.shop.domain.user.User;
 import com.shop.domain.user.UserAuth;
-import com.shop.domain.user.UserAuth.Auth;
 import com.shop.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;

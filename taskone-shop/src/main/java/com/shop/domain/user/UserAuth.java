@@ -1,13 +1,12 @@
 package com.shop.domain.user;
 
-import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
 
 @Entity
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor
 public class UserAuth implements GrantedAuthority {
 
     private static final UserAuth ADMIN_ROLE = new UserAuth(Auth.ADMIN);
@@ -41,8 +40,5 @@ public class UserAuth implements GrantedAuthority {
         return auth.toString();
     }
 
-    public enum Auth {
-        ADMIN, MODERATOR, USER
-    }
 
 }

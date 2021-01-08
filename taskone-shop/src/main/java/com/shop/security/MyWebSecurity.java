@@ -9,7 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import static com.shop.security.NamesOfAuths.*;
+import static com.shop.domain.user.Auth.*;
 
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -30,11 +30,11 @@ class MyWebSecurity extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests()
                 .mvcMatchers(HttpMethod.DELETE, "/**")
-                .hasAuthority(ADMIN_AUTH)
+                .hasAuthority(ADMIN.name())
                 .mvcMatchers(HttpMethod.PUT, "/**")
-                .hasAnyAuthority(MODERATOR_AUTH, ADMIN_AUTH)
+                .hasAnyAuthority(MODERATOR.name(), ADMIN.name())
                 .mvcMatchers(HttpMethod.POST, "/**")
-                .hasAnyAuthority(MODERATOR_AUTH, ADMIN_AUTH, USER_AUTH)
+                .hasAnyAuthority(MODERATOR.name(), ADMIN.name(), USER.name())
                 .mvcMatchers(HttpMethod.GET, "/**")
                 .not().authenticated()
                 .anyRequest()

@@ -1,3 +1,5 @@
 rootProject.name = 'KodillaExtraCourse'
 include 'moduleone'
 include 'taskone-shop'
+include 'tasktwo-batch'
+include 'spring-batch'
