@@ -30,7 +30,7 @@ class BatchConfiguration {
 
     private final JobBuilderFactory jobBuilderFactory;
     private final StepBuilderFactory stepBuilderFactory;
-    private final PersonWithAgeMapper personWithAgeMapper;
+    private final PersonWithDateMapper personWithDateMapper;
 
     @Bean
     FlatFileItemWriter<PersonWithAge> writer() {
@@ -60,7 +60,7 @@ class BatchConfiguration {
 
         DefaultLineMapper<PersonWithDate> lineMapper = new DefaultLineMapper<>();
         lineMapper.setLineTokenizer(tokenizer);
-        lineMapper.setFieldSetMapper(personWithAgeMapper);
+        lineMapper.setFieldSetMapper(personWithDateMapper);
 
         reader.setLineMapper(lineMapper);
         return reader;

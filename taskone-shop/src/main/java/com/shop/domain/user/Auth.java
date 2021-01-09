@@ -1,5 +1,9 @@
 package com.shop.domain.user;
 
 public enum Auth {
-    ADMIN, MODERATOR, USER
+    ADMIN, MODERATOR, USER;
+
+    public String auth() {
+        return this.name();
+    }
 }

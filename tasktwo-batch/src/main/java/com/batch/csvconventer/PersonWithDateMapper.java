@@ -9,9 +9,9 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 @Component
-class PersonWithAgeMapper extends BeanWrapperFieldSetMapper<PersonWithDate> {
+class PersonWithDateMapper extends BeanWrapperFieldSetMapper<PersonWithDate> {
 
-    public PersonWithAgeMapper() {
+    public PersonWithDateMapper() {
         setTargetType(PersonWithDate.class);
     }
 
@@ -25,4 +25,5 @@ class PersonWithAgeMapper extends BeanWrapperFieldSetMapper<PersonWithDate> {
         personWithDate.setDateOfBirth(LocalDate.parse(date, formatter));
         return personWithDate;
     }
+
 }
