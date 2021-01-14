@@ -5,3 +5,8 @@ include 'tasktwo-batch'
 include 'spring-batch'
 include 'spring-integration'
 include 'taskthree-integration'
+include 'core'
+include 'springevents'
+include 'calkulator'
+include 'kodilla-byte-manipulation'
+

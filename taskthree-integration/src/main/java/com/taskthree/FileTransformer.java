@@ -12,8 +12,9 @@ public class FileTransformer implements GenericTransformer<File, String> {
 
     @Override
     public String transform(File source) {
-        return "File name: \""+source.getName() + "\", created time: " + getCurrentDate();
+        return String.format("File name: %0$s , created time: %1$s ", source.getName(), getCurrentDate());
     }
+
     private String getCurrentDate() {
         LocalDateTime currentTime = LocalDateTime.now();
         return currentTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));

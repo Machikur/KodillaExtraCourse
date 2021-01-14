@@ -5,8 +5,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.integration.dsl.IntegrationFlow;
 import org.springframework.integration.dsl.IntegrationFlows;
 import org.springframework.integration.dsl.Pollers;
-import org.springframework.integration.file.DefaultFileNameGenerator;
-import org.springframework.integration.file.FileNameGenerator;
 import org.springframework.integration.file.FileReadingMessageSource;
 import org.springframework.integration.file.FileWritingMessageHandler;
 import org.springframework.integration.file.support.FileExistsMode;
@@ -17,9 +15,11 @@ import java.io.File;
 public class FileIntegrationConfiguration {
 
     @Bean
-    IntegrationFlow integrationFlow(FileReadingMessageSource source,
-                                    FileWritingMessageHandler handler,
-                                    FileTransformer transformer) {
+    IntegrationFlow integrationFlow(
+            FileReadingMessageSource source,
+            FileWritingMessageHandler handler,
+            FileTransformer transformer) {
+
         return IntegrationFlows.from(source, event -> event.poller(Pollers.fixedDelay(100)))
                 .transform(transformer)
                 .handle(handler)

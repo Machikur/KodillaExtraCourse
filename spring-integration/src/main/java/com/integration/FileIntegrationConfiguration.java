@@ -16,28 +16,29 @@ public class FileIntegrationConfiguration {
     @Bean
     IntegrationFlow integrationFlow(FileReadingMessageSource fileAdapter,
                                     FileTransformer fileTransformer,
-                                    FileWritingMessageHandler outputFileAdapter){
-        return IntegrationFlows.from(fileAdapter,config->config.poller(Pollers.fixedDelay(1000)))
-                .transform(fileTransformer,"transformFile")
+                                    FileWritingMessageHandler outputFileAdapter) {
+        return IntegrationFlows.from(fileAdapter, config -> config.poller(Pollers.fixedDelay(1000)))
+                .transform(fileTransformer, "transformFile")
                 .handle(outputFileAdapter)
                 .get();
     }
+
     @Bean
-    FileReadingMessageSource fileAdapter(){
-        FileReadingMessageSource fileSource=new FileReadingMessageSource();
+    FileReadingMessageSource fileAdapter() {
+        FileReadingMessageSource fileSource = new FileReadingMessageSource();
         fileSource.setDirectory(new File("data/input"));
         return fileSource;
     }
 
     @Bean
-    FileTransformer fileTransformer(){
+    FileTransformer fileTransformer() {
         return new FileTransformer();
     }
 
     @Bean
-    FileWritingMessageHandler outputFileAdapter(){
-        File directory=new File("data/output");
-        FileWritingMessageHandler writer=new FileWritingMessageHandler(directory);
+    FileWritingMessageHandler outputFileAdapter() {
+        File directory = new File("data/output");
+        FileWritingMessageHandler writer = new FileWritingMessageHandler(directory);
         writer.setExpectReply(false);
         return writer;
     }

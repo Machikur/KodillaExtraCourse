@@ -1,10 +1,10 @@
-package com.integration;
+package com.springevents;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class IntegrationApplicationTests {
+class SpringeventsApplicationTests {
 
     @Test
     void contextLoads() {

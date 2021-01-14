@@ -1,13 +1,13 @@
-package com.integration;
+package com.calkulator;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class IntegrationApplication {
+public class CalkulatorApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(IntegrationApplication.class, args);
+        SpringApplication.run(CalkulatorApplication.class, args);
     }
 
 }
