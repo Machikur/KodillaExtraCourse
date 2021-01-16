@@ -2,7 +2,7 @@ package com.calkulator.controller;
 
 import com.calkulator.domain.Operation;
 import com.calkulator.domain.OperationSymbol;
-import com.calkulator.event.OperationRegister;
+import com.calkulator.event.OperationEvent;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.ApplicationEventPublisherAware;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -49,7 +49,7 @@ public class AppController implements ApplicationEventPublisherAware {
 
     private void registerOperationEvent(double one, double two, OperationSymbol op) {
         publisher.publishEvent
-                (new OperationRegister(this, one, two, op));
+                (new OperationEvent(this, one, two, op));
     }
 
 }

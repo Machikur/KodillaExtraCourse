@@ -12,7 +12,7 @@ public class FileTransformer implements GenericTransformer<File, String> {
 
     @Override
     public String transform(File source) {
-        return String.format("File name: %0$s , created time: %1$s ", source.getName(), getCurrentDate());
+        return String.format("File name: %s , created time: %s ", source.getName(), getCurrentDate());
     }
 
     private String getCurrentDate() {

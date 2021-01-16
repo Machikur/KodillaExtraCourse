@@ -21,7 +21,7 @@ public class BeanMonitor implements BeanPostProcessor {
 
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-        LOGGER.log(Level.INFO, String.format("bean: %0$s is already created ", beanName));
+        LOGGER.log(Level.INFO, String.format("bean: %s is already created ", beanName));
         return bean;
     }
 

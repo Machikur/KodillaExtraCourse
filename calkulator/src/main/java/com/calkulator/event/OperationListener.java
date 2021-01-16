@@ -7,12 +7,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @Component
-public class OperationManager implements ApplicationListener<OperationRegister> {
+public class OperationListener implements ApplicationListener<OperationEvent> {
 
     Logger logger = Logger.getGlobal();
 
     @Override
-    public void onApplicationEvent(OperationRegister event) {
+    public void onApplicationEvent(OperationEvent event) {
         logger.log(Level.INFO, "Przeprowadzona operacja to " + event.getOperationSymbol() +
                 " na liczbach: " + event.getOne() + " i " + event.getTwo());
     }
