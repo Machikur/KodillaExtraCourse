@@ -17,7 +17,7 @@ public class OrderController {
         this.template = template;
     }
 
-    @PostMapping("/order")
+    @PostMapping
     public void createOrder(@RequestBody Order order) {
         template.send("orderMessage", m -> m.createObjectMessage(order));
     }

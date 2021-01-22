@@ -3,6 +3,7 @@ package com.springmessaging.domain;
 import java.io.Serializable;
 
 public class Order implements Serializable {
+
     private String orderName;
     private double price;
     private int quantity;
@@ -13,6 +14,21 @@ public class Order implements Serializable {
         this.quantity = quantity;
     }
 
+    public Order() {
+    }
+
+    public String getOrderName() {
+        return orderName;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
     @Override
     public String toString() {
         return "Order{" +
@@ -21,4 +37,5 @@ public class Order implements Serializable {
                 ", quantity=" + quantity +
                 '}';
     }
+
 }
