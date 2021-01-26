@@ -1,6 +1,7 @@
 package com.kodilla;
 
 import com.kodilla.domain.Customer;
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.persistence.EntityManager;
@@ -8,13 +9,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
 
 import static org.assertj.core.api.Assertions.assertThat;
-
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.PersistenceUnit;
-import static org.assertj.core.api.Assertions.*;
 
 @SpringBootTest
 class JpaTestSuite {

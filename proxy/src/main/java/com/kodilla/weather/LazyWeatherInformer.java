@@ -2,7 +2,7 @@ package com.kodilla.weather;
 
 public class LazyWeatherInformer implements WeatherInformer {
 
-    private String weather="sunny";
+    private String weather = "sunny";
 
     @Override
     public String getWeather() {

@@ -1,6 +1,5 @@
 package com.kodilla.task;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -27,7 +26,7 @@ public class SubQuest {
     private String status;
 
     @OneToMany(targetEntity = Person.class)
-    private List<Person> persons=new ArrayList<>();
+    private List<Person> persons = new ArrayList<>();
 
     public SubQuest(String name, String status) {
         this.name = name;

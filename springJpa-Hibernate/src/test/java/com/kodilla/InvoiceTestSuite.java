@@ -1,14 +1,18 @@
 package com.kodilla;
 
 
-import com.kodilla.domain.*;
+import com.kodilla.domain.Customer;
+import com.kodilla.domain.Invoice;
+import com.kodilla.domain.Item;
+import com.kodilla.domain.Product;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import javax.persistence.*;
 
 @SpringBootTest
 class InvoiceTestSuite {

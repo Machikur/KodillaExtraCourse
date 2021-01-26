@@ -23,15 +23,17 @@ public class TaskTestSuite {
 
     @Test
     public void test() {
-
+        //given
         EntityManager manager = factory.createEntityManager();
 
         List<Long> questsList = addEntities();
+
+        //when
         System.out.println("\n");
         logger.info("Rozpoczynam odczytywanie obiektów\n");
 
         EntityGraph<Quest> eg = manager.createEntityGraph(Quest.class);
-        //eg.addSubgraph("subQuests");
+        eg.addSubgraph("subQuests");
 
         TypedQuery<Quest> quest = manager.createQuery("FROM Quest WHERE id IN(" + joinIds(questsList) + ")",
                 Quest.class);
@@ -39,6 +41,8 @@ public class TaskTestSuite {
         quest.setHint("javax.persistence.fetchgraph", eg);
 
         quest.getResultList().forEach(System.out::println);
+
+        //then should be less hibernates actions then usually
 
         System.out.println("\n");
         logger.info("Wczytywanie zakończone");

@@ -47,7 +47,7 @@ abstract class AbstractPlainTextHttpConverter<T> implements HttpMessageConverter
     }
 
     @Override
-    public void write(T t, MediaType contentType, HttpOutputMessage outputMessage) throws  HttpMessageNotWritableException {
+    public void write(T t, MediaType contentType, HttpOutputMessage outputMessage) throws HttpMessageNotWritableException {
         System.out.println("im writing xd");
     }
 

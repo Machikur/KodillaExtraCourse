@@ -1,6 +1,6 @@
 package com.kodilla;
 
-public class LazyDataRetrieverProxy implements DbDataRetriever{
+public class LazyDataRetrieverProxy implements DbDataRetriever {
 
     private DbDataRetriever retriever;
 
