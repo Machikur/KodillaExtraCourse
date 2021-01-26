@@ -43,11 +43,11 @@ abstract class AbstractPlainTextHttpConverter<T> implements HttpMessageConverter
 
     @Override
     public T read(Class<? extends T> clazz, HttpInputMessage inputMessage) throws IOException, HttpMessageNotReadableException {
-        return buildObjectFromMessage(separateMessage(inputMessage, setSeparator()));
+        return buildObjectFromMessage(separateMessage(inputMessage, getSeparator()));
     }
 
     @Override
-    public void write(T t, MediaType contentType, HttpOutputMessage outputMessage) throws IOException, HttpMessageNotWritableException {
+    public void write(T t, MediaType contentType, HttpOutputMessage outputMessage) throws  HttpMessageNotWritableException {
         System.out.println("im writing xd");
     }
 
@@ -66,6 +66,6 @@ abstract class AbstractPlainTextHttpConverter<T> implements HttpMessageConverter
 
     protected abstract T buildObjectFromMessage(String[] resultFields);
 
-    protected abstract String setSeparator();
+    protected abstract String getSeparator();
 
 }

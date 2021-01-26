@@ -14,7 +14,7 @@ public class HttpMessageColonConverter extends AbstractPlainTextHttpConverter<Bo
     }
 
     @Override
-    protected String setSeparator() {
+    protected String getSeparator() {
         return ":";
     }
 

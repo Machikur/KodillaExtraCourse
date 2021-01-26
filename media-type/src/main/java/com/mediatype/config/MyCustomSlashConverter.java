@@ -14,7 +14,7 @@ public class MyCustomSlashConverter extends AbstractPlainTextHttpConverter<MyCus
     }
 
     @Override
-    protected String setSeparator() {
+    protected String getSeparator() {
         return "/";
     }
 

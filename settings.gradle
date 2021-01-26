@@ -15,4 +15,7 @@ include 'instrumental-task'
 include 'instrumental-task-agent'
 include 'media-type'
 include 'spring-messaging'
+include 'spring-flux'
+include 'proxy'
+include 'springJpa-Hibernate'
 
