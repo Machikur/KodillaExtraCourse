@@ -1,8 +1,7 @@
 package com.kodilla.task;
 
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,8 +9,7 @@ import javax.persistence.Id;
 
 @Entity
 @NoArgsConstructor
-@Getter
-@ToString
+@Data
 public class Person {
 
     @Id

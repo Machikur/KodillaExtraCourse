@@ -1,22 +1,15 @@
 package com.kodilla.task;
 
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import java.util.ArrayList;
-import java.util.List;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @NoArgsConstructor
-@Getter
-@Setter
-@ToString
+@Data
 public class Quest {
 
     @Id
@@ -27,19 +20,17 @@ public class Quest {
 
     private String status;
 
-    @OneToMany(targetEntity = Person.class)
-    private List<Person> persons = new ArrayList<>();
+    @ManyToOne(targetEntity = Person.class)
+    private Person person;
 
     @OneToMany(targetEntity = SubQuest.class)
-    private List<SubQuest> subQuests = new ArrayList<>();
+    @JoinColumn(name = "subQuest_id")
+    private Set<SubQuest> subQuests = new HashSet<>();
 
-    public Quest(String name, String status) {
+    public Quest(String name, String status, Person person) {
         this.name = name;
         this.status = status;
-    }
-
-    public void addPerson(Person person) {
-        persons.add(person);
+        this.person = person;
     }
 
     public void addSubQuest(SubQuest subQuest) {

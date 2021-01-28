@@ -15,11 +15,9 @@ import java.util.stream.Collectors;
 @SpringBootTest
 public class TaskTestSuite {
 
+    private final Logger logger = Logger.getLogger(this.getClass().getName());
     @PersistenceUnit
     private EntityManagerFactory factory;
-
-    private Logger logger = Logger.getLogger(this.getClass().getName());
-
 
     @Test
     public void test() {
@@ -33,7 +31,8 @@ public class TaskTestSuite {
         logger.info("Rozpoczynam odczytywanie obiektów\n");
 
         EntityGraph<Quest> eg = manager.createEntityGraph(Quest.class);
-        eg.addSubgraph("subQuests");
+        eg.addSubgraph("subQuests").addSubgraph("person");
+        eg.addSubgraph("person");
 
         TypedQuery<Quest> quest = manager.createQuery("FROM Quest WHERE id IN(" + joinIds(questsList) + ")",
                 Quest.class);
@@ -60,15 +59,11 @@ public class TaskTestSuite {
         Person person2 = new Person("Janusz", "Kosacz");
         Person person3 = new Person("Janusz", "Nochal");
         Person person4 = new Person("Janusz", "Nochalos");
-        Quest quest1 = new Quest("wynieść smieci", "do zrobienia");
-        Quest quest2 = new Quest("Umyj okna", "do zrobienia");
-        SubQuest subQuest = new SubQuest("Posprzątaj", "do zrobienia");
-        SubQuest subQuest2 = new SubQuest("Zamieć", "do zrobienia");
+        Quest quest1 = new Quest("wynieść smieci", "do zrobienia", person1);
+        Quest quest2 = new Quest("Umyj okna", "do zrobienia", person2);
+        SubQuest subQuest = new SubQuest("Posprzątaj", "do zrobienia", person3);
+        SubQuest subQuest2 = new SubQuest("Zamieć", "do zrobienia", person4);
 
-        quest1.addPerson(person1);
-        quest1.addPerson(person2);
-        subQuest2.addPerson(person3);
-        subQuest.addPerson(person4);
         quest2.addSubQuest(subQuest);
         quest1.addSubQuest(subQuest2);
 
@@ -89,4 +84,5 @@ public class TaskTestSuite {
 
         return Arrays.asList(quest1.getId(), quest2.getId());
     }
+
 }

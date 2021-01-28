@@ -5,7 +5,6 @@ import java.util.Random;
 public class App {
     public static void main(String[] args) throws InterruptedException {
         Random random = new Random();
-
         System.out.println("Zaczynam pętle ze StandardWeatherInformer");
         long before = System.currentTimeMillis();
         for (int i = 0; i < 5; i++) {
