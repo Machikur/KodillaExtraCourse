@@ -23,12 +23,13 @@ public class App {
         System.out.println("Zaczynam pętle ze LazyWeatherInformer");
         long beforeLazy = System.currentTimeMillis();
         for (int i = 0; i < 5; i++) {
-            WeatherInformer informer = new LazyWeatherInformer();
+            System.out.printf("step %d start %n", i);
+            WeatherInformer lazyWeatherInformer = new LazyWeatherInformer();
             int choose = random.nextInt(100);
             if (choose < 20) {
-                informer.refreshData();
+                lazyWeatherInformer.refreshData();
+                System.out.println(lazyWeatherInformer.getWeather());
             }
-            System.out.println(informer.getWeather());
             System.out.printf("step %d done %n%n", i);
         }
         System.out.printf("Czas wykonania LazyWeatherInformer %s[ms]%n", System.currentTimeMillis() - beforeLazy);

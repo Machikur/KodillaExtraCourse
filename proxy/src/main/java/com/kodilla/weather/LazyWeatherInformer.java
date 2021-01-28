@@ -2,18 +2,24 @@ package com.kodilla.weather;
 
 public class LazyWeatherInformer implements WeatherInformer {
 
-    private String weather = "sunny";
+    private StandardWeatherInformer informer;
 
     @Override
-    public String getWeather() {
-        return weather;
+    public String getWeather() throws InterruptedException {
+        initializeInformer();
+        return informer.getWeather();
     }
 
     @Override
     public void refreshData() throws InterruptedException {
-        Thread.sleep(5000);
-        System.out.println("aktualizuje pogodę");
-        weather = "rainy";
+        initializeInformer();
+        informer.refreshData();
+    }
+
+    private void initializeInformer() throws InterruptedException {
+        if (informer == null) {
+            informer = new StandardWeatherInformer();
+        }
     }
 
 }

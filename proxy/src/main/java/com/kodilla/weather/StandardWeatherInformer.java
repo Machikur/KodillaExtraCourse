@@ -15,7 +15,7 @@ public class StandardWeatherInformer implements WeatherInformer {
 
     @Override
     public void refreshData() throws InterruptedException {
-        Thread.sleep(5000);
+        Thread.sleep(500);
         System.out.println("aktualizuje pogodę");
         weather = "rainy";
     }
