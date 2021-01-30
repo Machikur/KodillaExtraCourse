@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.persistence.*;
-import javax.persistence.metamodel.Attribute;
 import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Logger;

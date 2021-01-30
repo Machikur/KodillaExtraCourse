@@ -1,7 +1,7 @@
 package com.kodilla.task;
 
-import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -10,7 +10,7 @@ import java.util.Set;
 
 @Entity
 @NoArgsConstructor
-@Data
+@ToString
 @Table(name = "sub_quest")
 public class SubQuest {
 
@@ -37,9 +37,20 @@ public class SubQuest {
         persons.add(person);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SubQuest subQuest = (SubQuest) o;
+        return id != null &&
+                Objects.equals(id, subQuest.id) &&
+                Objects.equals(name, subQuest.name) &&
+                Objects.equals(status, subQuest.status);
+    }
 
     @Override
     public int hashCode() {
-        return Objects.hash( name, status, persons);
+        return getClass().hashCode();
     }
+
 }
