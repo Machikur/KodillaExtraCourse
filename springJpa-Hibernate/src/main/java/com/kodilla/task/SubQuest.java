@@ -3,14 +3,15 @@ package com.kodilla.task;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @NoArgsConstructor
 @Data
+@Table(name = "sub_quest")
 public class SubQuest {
 
     @Id
@@ -21,12 +22,24 @@ public class SubQuest {
 
     private String status;
 
-    @ManyToOne(targetEntity = Person.class)
-    private Person person;
+    @ManyToMany(targetEntity = Person.class)
+    @JoinTable(name = "sub_quests_persons",
+            joinColumns = @JoinColumn(name = "sub_quest_id"),
+            inverseJoinColumns = @JoinColumn(name = "person_id"))
+    private Set<Person> persons = new HashSet<>();
 
-    public SubQuest(String name, String status, Person person) {
+    public SubQuest(String name, String status) {
         this.name = name;
         this.status = status;
-        this.person = person;
+    }
+
+    public void addPerson(Person person) {
+        persons.add(person);
+    }
+
+
+    @Override
+    public int hashCode() {
+        return Objects.hash( name, status, persons);
     }
 }

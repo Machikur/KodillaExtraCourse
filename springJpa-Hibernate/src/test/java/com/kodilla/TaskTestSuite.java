@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.persistence.*;
+import javax.persistence.metamodel.Attribute;
 import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Logger;
@@ -31,10 +32,11 @@ public class TaskTestSuite {
         logger.info("Rozpoczynam odczytywanie obiektów\n");
 
         EntityGraph<Quest> eg = manager.createEntityGraph(Quest.class);
-        eg.addSubgraph("subQuests").addSubgraph("person");
-        eg.addSubgraph("person");
+        eg.addSubgraph("subQuests").addSubgraph("persons");
+        eg.addSubgraph("persons");
 
-        TypedQuery<Quest> quest = manager.createQuery("FROM Quest WHERE id IN(" + joinIds(questsList) + ")",
+        TypedQuery<Quest> quest = manager.createQuery("FROM Quest WHERE id IN(" + joinIds(questsList) + ") " +
+                        "",
                 Quest.class);
 
         quest.setHint("javax.persistence.fetchgraph", eg);
@@ -59,11 +61,15 @@ public class TaskTestSuite {
         Person person2 = new Person("Janusz", "Kosacz");
         Person person3 = new Person("Janusz", "Nochal");
         Person person4 = new Person("Janusz", "Nochalos");
-        Quest quest1 = new Quest("wynieść smieci", "do zrobienia", person1);
-        Quest quest2 = new Quest("Umyj okna", "do zrobienia", person2);
-        SubQuest subQuest = new SubQuest("Posprzątaj", "do zrobienia", person3);
-        SubQuest subQuest2 = new SubQuest("Zamieć", "do zrobienia", person4);
+        Quest quest1 = new Quest("wynieść smieci", "do zrobienia");
+        Quest quest2 = new Quest("Umyj okna", "do zrobienia");
+        SubQuest subQuest = new SubQuest("Posprzątaj", "do zrobienia");
+        SubQuest subQuest2 = new SubQuest("Zamieć", "do zrobienia");
 
+        quest1.addPerson(person1);
+        quest2.addPerson(person2);
+        subQuest.addPerson(person3);
+        subQuest2.addPerson(person4);
         quest2.addSubQuest(subQuest);
         quest1.addSubQuest(subQuest2);
 

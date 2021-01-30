@@ -10,6 +10,7 @@ import java.util.Set;
 @Entity
 @NoArgsConstructor
 @Data
+@Table(name = "quest")
 public class Quest {
 
     @Id
@@ -20,17 +21,23 @@ public class Quest {
 
     private String status;
 
-    @ManyToOne(targetEntity = Person.class)
-    private Person person;
+    @ManyToMany(targetEntity = Person.class)
+    @JoinTable(name = "quests_persons",
+            joinColumns = @JoinColumn(name = "quest_id"),
+            inverseJoinColumns = @JoinColumn(name = "person_id"))
+    private Set<Person> persons=new HashSet<>();
 
     @OneToMany(targetEntity = SubQuest.class)
     @JoinColumn(name = "subQuest_id")
     private Set<SubQuest> subQuests = new HashSet<>();
 
-    public Quest(String name, String status, Person person) {
+    public Quest(String name, String status) {
         this.name = name;
         this.status = status;
-        this.person = person;
+    }
+
+    public void addPerson(Person person) {
+        persons.add(person);
     }
 
     public void addSubQuest(SubQuest subQuest) {
